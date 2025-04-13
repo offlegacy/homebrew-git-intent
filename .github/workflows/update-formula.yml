@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to update (e.g., 0.0.1)'
+        description: "Version to update (e.g., 0.0.1)"
         required: true
         type: string
       sha256:
-        description: 'SHA256 checksum of the tarball'
+        description: "SHA256 checksum of the tarball"
         required: true
         type: string
 
@@ -27,11 +27,11 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'Update git-intent to v${{ github.event.inputs.version }}'
-          title: 'Update git-intent to v${{ github.event.inputs.version }}'
+          commit-message: "Update git-intent to v${{ github.event.inputs.version }}"
+          title: "Update git-intent to v${{ github.event.inputs.version }}"
           body: |
             Updates git-intent to v${{ github.event.inputs.version }}
-            
+
             - Version: ${{ github.event.inputs.version }}
             - SHA256: ${{ github.event.inputs.sha256 }}
           branch: update-git-intent-v${{ github.event.inputs.version }}
