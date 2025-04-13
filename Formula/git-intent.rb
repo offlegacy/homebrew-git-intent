@@ -10,6 +10,7 @@ class GitIntent < Formula
   end
 
   def install
+    mv "git-intent-macos", "git-intent"
     bin.install "git-intent"
   end
 
