@@ -1,8 +1,18 @@
 name: Update Formula
 
 on:
-  workflow_dispatch:
+  repository_dispatch:
     types: [update-formula]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to update (e.g., 0.0.1)"
+        required: true
+        type: string
+      sha256:
+        description: "SHA256 checksum of the tarball"
+        required: true
+        type: string
 jobs:
   update:
     runs-on: ubuntu-latest
