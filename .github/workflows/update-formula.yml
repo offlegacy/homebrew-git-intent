@@ -2,16 +2,7 @@ name: Update Formula
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to update (e.g., 0.0.1)"
-        required: true
-        type: string
-      sha256:
-        description: "SHA256 checksum of the tarball"
-        required: true
-        type: string
-
+    types: [update-formula]
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -20,19 +11,19 @@ jobs:
 
       - name: Update formula version and checksum
         run: |
-          sed -i 's/version ".*"/version "${{ github.event.inputs.version }}"/' Formula/git-intent.rb
-          sed -i 's/sha256 ".*"/sha256 "${{ github.event.inputs.sha256 }}"/' Formula/git-intent.rb
+          sed -i 's/version ".*"/version "${{ github.event.client_payload.version }}"/' Formula/git-intent.rb
+          sed -i 's/sha256 ".*"/sha256 "${{ github.event.client_payload.sha256 }}"/' Formula/git-intent.rb
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update git-intent to v${{ github.event.inputs.version }}"
-          title: "Update git-intent to v${{ github.event.inputs.version }}"
+          commit-message: "Update git-intent to v${{ github.event.client_payload.version }}"
+          title: "Update git-intent to v${{ github.event.client_payload.version }}"
           body: |
-            Updates git-intent to v${{ github.event.inputs.version }}
+            Updates git-intent to v${{ github.event.client_payload.version }}
 
-            - Version: ${{ github.event.inputs.version }}
-            - SHA256: ${{ github.event.inputs.sha256 }}
-          branch: update-git-intent-v${{ github.event.inputs.version }}
+            - Version: ${{ github.event.client_payload.version }}
+            - SHA256: ${{ github.event.client_payload.sha256 }}
+          branch: update-git-intent-v${{ github.event.client_payload.version }}
           delete-branch: true
