@@ -6,7 +6,7 @@ class GitIntent < Formula
 
   on_macos do
     url "https://github.com/offlegacy/git-intent/releases/download/v#{version}/git-intent-#{version}-darwin-amd64.tar.gz"
-    sha256 "04a0c984fccc2f04f5279ebc05b0604a011b95630089065a7be457e852575e01"
+    sha256 "b3d439458253f2f14586587451a3665989fa415550873e14cd0f24bceeaab44e"
   end
 
   def install
