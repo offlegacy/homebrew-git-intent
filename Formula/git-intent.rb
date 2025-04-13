@@ -1,11 +1,11 @@
 class GitIntent < Formula
   desc "Git workflow tool for intentional commits"
-  homepage "[https://github.com/offlegacy/git-intent"](https://github.com/offlegacy/git-intent")
+  homepage "https://github.com/offlegacy/git-intent"
   license "MIT"
   version "0.0.0"
 
   on_macos do
-    url "[https://github.com/offlegacy/git-intent/releases/download/v#{version}/git-intent-#{version}-darwin-amd64.tar.gz"](https://github.com/offlegacy/git-intent/releases/download/v#{version}/git-intent-#{version}-darwin-amd64.tar.gz")
+    url "https://github.com/offlegacy/git-intent/releases/download/v#{version}/git-intent-#{version}-darwin-amd64.tar.gz"
     sha256 "REPLACE_WITH_ACTUAL_SHA256"
   end
 
