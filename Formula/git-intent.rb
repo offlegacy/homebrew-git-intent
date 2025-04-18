@@ -11,6 +11,7 @@ class GitIntent < Formula
 
   def install
     bin.install "git-intent"
+    system "codesign", "--force", "--deep", "--sign", "-", "#{bin}/git-intent"
   end
 
   test do
